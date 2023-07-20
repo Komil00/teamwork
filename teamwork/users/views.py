@@ -30,6 +30,11 @@ class ForEmployee(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
 
+    def get_serializer_class(self):
+        if self.action in ['list']:
+            return EmployeeGetSerializer
+        return EmployeePostSerializer
+    
 class ForEmployer(viewsets.ModelViewSet):
     queryset = Employer.objects.all()
     serializer_class = EmployerPostSerializer

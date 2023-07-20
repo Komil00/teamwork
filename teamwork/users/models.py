@@ -68,6 +68,10 @@ class Employee(models.Model):
 
     def __str__(self):
         return self.user.phone + ' ' + self.user.name
+    
+    class Meta:
+        verbose_name = 'Сотрудник'
+        verbose_name_plural = 'Сотрудники'
 
 
 class Employer(models.Model):
@@ -98,3 +102,7 @@ class Employer(models.Model):
 
     def __str__(self):
         return self.user.phone + ' ' + self.user.name
+    
+    class Meta:
+        verbose_name = 'Работодател'
+        verbose_name_plural = 'Работодатели'
