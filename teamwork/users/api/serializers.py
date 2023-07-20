@@ -52,6 +52,19 @@ class EmployerGetSerializer(serializers.ModelSerializer):
 class EmployerPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employer
-        fields = ['organazation_name', 'country', 'city', 'employee_count', 'fish', 'organization_name', 'bank_name',
-                   'account_number', 'mfo', 'inn', 'ifut', 'legal_address', 'index', 'telegram_phone', 'site', 'instagram', 'telegram', 'linkedin', 'facebook']
+        fields = '__all__'
+
+class EmployeeGetSerializer(serializers.ModelSerializer):
+    user = UserTSerializer(read_only=True, many=False)
+    class Meta:
+        model = Employee
+        fields = '__all__'
+
+class EmployeePostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Employee
+        fields = '__all__'
+
+        # fields = ['organazation_name', 'country', 'city', 'employee_count', 'fish', 'organization_name', 'bank_name',
+        #            'account_number', 'mfo', 'inn', 'ifut', 'legal_address', 'index', 'telegram_phone', 'site', 'instagram', 'telegram', 'linkedin', 'facebook']
 

@@ -8,7 +8,7 @@ from requests import Response
 from rest_framework import viewsets, generics
 from rest_framework import status
 
-from teamwork.users.api.serializers import EmployeeSerializer, EmployerGetSerializer, EmployerPostSerializer, UserSerializer,UserDetailSerializer
+from teamwork.users.api.serializers import EmployeeGetSerializer, EmployeePostSerializer, EmployeeSerializer, EmployerGetSerializer, EmployerPostSerializer, UserSerializer,UserDetailSerializer
 from teamwork.users.models import Employee, Employer
 User = get_user_model()
 
@@ -33,11 +33,20 @@ class ForEmployer(viewsets.ModelViewSet):
             return EmployerGetSerializer
         return EmployerPostSerializer
     
-    def create(self, request, *args, **kwargs):
-        serializer = EmployerPostSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save(user=self.request.user) # user pole ni zapros berayotgan user bn tuldiradi
-        return Response(serializer.data)
+    # def create(self, request, *args, **kwargs):
+    #     serializer = EmployerPostSerializer(data=request.data)
+    #     serializer.is_valid(raise_exception=True)
+    #     serializer.save(user=self.request.user) # user pole ni zapros berayotgan user bn tuldiradi
+    #     return Response(serializer.data)
+
+class ForEmployee(viewsets.ModelViewSet):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeePostSerializer
+    
+    def get_serializer_class(self):
+        if self.action in ['list']:
+            return EmployeeGetSerializer
+        return EmployeePostSerializer
 
 # class UserDetailView(LoginRequiredMixin, DetailView):
 #     model = User

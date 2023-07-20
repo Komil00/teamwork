@@ -7,10 +7,11 @@ from .managers import UserManager
 from teamwork.skills.models import Specialties, Skills
 
 
-User_Type= [
-    ('EMPLOYEE', "EMPLOYEE"),
-    ('EMPLOYER', "EMPLOYER"),
- ]
+User_Type = (
+    ("EMPLOYEE", "EMPLOYEE"),
+    ("EMPLOYER", "EMPLOYER"),
+
+)
 
 class User(AbstractUser):
     username = None
@@ -19,7 +20,7 @@ class User(AbstractUser):
 
     name = models.CharField(_("Name of User"), max_length=255)
     phone = models.CharField(_("Phone"), unique=True, max_length=13)
-    type = models.CharField(choices=User_Type.choices)
+    type = models.CharField(max_length=15, choices=User_Type, default=User_Type[0])
     image = models.ImageField(_("Image"), upload_to='user_image', null=True, blank=True)
 
     objects = UserManager()
