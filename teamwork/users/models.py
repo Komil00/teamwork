@@ -25,8 +25,8 @@ class User(AbstractUser):
 
     objects = UserManager()
 
-    USERNAME_FIELD = "phone"
-    REQUIRED_FIELDS = ["name"]
+    USERNAME_FIELD = 'phone'
+    REQUIRED_FIELDS = ['name']
 
     def get_absolute_url(self):
         return reverse("users:detail", kwargs={"phone": self.phone})

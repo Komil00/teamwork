@@ -10,7 +10,13 @@ from rest_framework import status
 
 from teamwork.users.api.serializers import EmployeeGetSerializer, EmployeePostSerializer, EmployeeSerializer, EmployerGetSerializer, EmployerPostSerializer, UserSerializer,UserDetailSerializer
 from teamwork.users.models import Employee, Employer
+from teamwork.users.serializers import UserSerializers
 User = get_user_model()
+
+class CreateUserViewSet(viewsets.ModelViewSet):
+    serializer_class = UserSerializers
+    queryset = User.objects.all()
+    http_method_names = ['post']
 
 class UsersViewList(generics.ListAPIView):
     queryset = User.objects.all()

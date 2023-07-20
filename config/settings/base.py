@@ -314,9 +314,13 @@ DJOSER = {
     # 'ACTIVATION_URL': '#/activate/{uid}/{token}',
     # 'SEND_ACTIVATION_EMAIL': True,
     'SERIALIZERS': {
-        'user_create': 'teamwork.users.api.serializers.UserSerializer',
+        # 'user_create': 'teamwork.users.api.serializers.UserSerializer',
         # 'user': 'customuser.serializers.CustomUserSerializers',
         # 'current_user': 'customuser.serializers.CustomUserSerializers',
 
     },
 }
+# LOGIN_REDIRECT_URL = '/'
+# LOGIN_URL = '/api/login/'
+# LOGOUT_URL = '/api/logout/'
+# LOGOUT_REDIRECT_URL = LOGIN_URL

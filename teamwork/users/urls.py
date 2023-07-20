@@ -1,6 +1,6 @@
 from django.urls import include, path
 
-from teamwork.users.views import ForEmployee, ForEmployer, UsersViewList,UsersViewDetail
+from teamwork.users.views import ForEmployee, ForEmployer, UsersViewList,UsersViewDetail,CreateUserViewSet
 # from teamwork.users.api.views import (
 #     user_api_view, 
 #     user_detail_view, 
@@ -19,6 +19,8 @@ from rest_framework import routers
 app_name = "users"
 
 router = routers.DefaultRouter()
+router.register(r'registration', CreateUserViewSet, basename='registration')
+
 router.register(r'foremployee', ForEmployee, basename='foremployee')
 router.register(r'foremployer', ForEmployer, basename='foremployer')
 
